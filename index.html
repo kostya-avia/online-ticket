@@ -53,13 +53,16 @@
     .contacts-card.small{grid-column:span 4;display:flex;flex-direction:column;gap:10px}
     .contacts-card p{margin:6px 0}
     .contacts .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
-    @media (max-width:900px){.card{grid-column:span 6}.contacts-card,.contacts-card.small{grid-column:span 12}}
-    @media (max-width:640px){.features{gap:12px}.card{grid-column:span 12}.iframe-box{min-height:520px;height:70vh}.nav .btn{display:none}}
     /* media */
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.6}
     .frame-wrap .ambient{width:100%;border-radius:12px;display:block;margin-bottom:12px;border:1px solid rgba(255,255,255,.06)}
     .journey{margin:28px 0 40px}
     .journey-video{width:100%;border-radius:16px;display:block;border:1px solid rgba(255,255,255,.08)}
+    /* icon button */
+    .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);cursor:pointer}
+    .icon-btn:hover{background:rgba(255,255,255,.1)}
+    @media (max-width:900px){.card{grid-column:span 6}.contacts-card,.contacts-card.small{grid-column:span 12}}
+    @media (max-width:640px){.features{gap:12px}.card{grid-column:span 12}.iframe-box{min-height:520px;height:70vh}.nav .btn{display:none}}
   </style>
 </head>
 <body>
@@ -124,7 +127,7 @@
           allow="payment *; clipboard-write; fullscreen; geolocation; camera; microphone; autoplay"
         ></iframe>
       </div>
-      <p class="note">Пряме посилання на форму: <a href="https://online.agentskiy.com" rel="noopener" target="_blank">https://online.agentskiy.com</a></p>
+      <p class="note">Пряма лінка: <a href="https://online.agentskiy.com" rel="noopener" target="_blank">відкрити у новому вікні</a></p>
     </section>
 
     <section class="faq" aria-label="Часті запитання">
@@ -149,13 +152,21 @@
           <h3>Реквізити</h3>
           <p><strong>ФОП:</strong> Домешок М.М.</p>
           <p><strong>Телефон:</strong> <a href="tel:+380957956455">+380 (95) 795 64 55</a></p>
-          <p><strong>Email:</strong> <a href="mailto:flpdomeshok@gmail.com">flpdomeshok@gmail.com</a></p>
+          <!-- Прихований e-mail: показуємо тільки іконку-кнопку -->
+          <p><strong>Email:</strong>
+            <button class="icon-btn" id="mailBtn" aria-label="Написати листа" title="Написати листа">
+              <!-- envelope icon -->
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e5e7eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/>
+              </svg>
+            </button>
+          </p>
           <p><strong>IBAN:</strong> <span class="mono">UA803052990000026003040109035</span></p>
           <p><strong>Банк:</strong> КИЇВСЬКЕ ГРВ ПАТ КБ «ПРИВАТБАНК»</p>
         </div>
         <div class="contacts-card small">
           <h3>Підтримка 24/7</h3>
-          <p>Пишіть або телефонуйте з будь-яких питань щодо бронювань, повернень та змін.</p>
+          <p>Звертайтеся з будь-яких питань щодо бронювань, повернень та змін.</p>
           <a class="btn" href="#book">Відкрити форму бронювання</a>
         </div>
       </div>
@@ -171,12 +182,29 @@
   <footer>
     <div class="container foot">
       <div>© <span id="y"></span> ФОП Домешок М.М. · Усі права захищені.</div>
-      <div>Телефон: <a href="tel:+380957956455">+380 (95) 795 64 55</a> · Email: <a href="mailto:flpdomeshok@gmail.com">flpdomeshok@gmail.com</a></div>
+      <div>
+        Телефон: <a href="tel:+380957956455">+380 (95) 795 64 55</a>
+        · <button class="icon-btn" id="mailBtnFooter" aria-label="Написати листа" title="Написати листа" style="vertical-align:middle">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e5e7eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 4h16v16H4z"/><path d="m22 6-10 7L2 6"/>
+            </svg>
+          </button>
+      </div>
     </div>
   </footer>
 
   <script>
+    // Рік у футері
     document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Кнопки e-mail (адрес не світиться в коді сторінки)
+    const openMail = () => {
+      const user = "flpdomeshok";
+      const domain = "gmail.com";
+      window.location.href = "mailto:" + user + "@" + domain;
+    };
+    document.getElementById('mailBtn')?.addEventListener('click', openMail);
+    document.getElementById('mailBtnFooter')?.addEventListener('click', openMail);
   </script>
 </body>
 </html>
