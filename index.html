@@ -24,31 +24,43 @@
     body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,"Noto Sans","Helvetica Neue",Arial,"Apple Color Emoji","Segoe UI Emoji";color:var(--text);
       background:radial-gradient(1200px 600px at 80% -10%,rgba(34,211,238,.12),transparent 60%),radial-gradient(900px 500px at 10% 0%,rgba(14,165,233,.14),transparent 60%),var(--bg);line-height:1.55}
     a{color:var(--accent-2);text-decoration:none} a:hover{text-decoration:underline}
-    .container{width:100%;max-width:1100px;margin:0 auto;padding:0 20px}
+
+    /* ширина сайта */
+    .container{width:100%;max-width:1400px;margin:0 auto;padding:0 20px}
+
     header{position:sticky;top:0;backdrop-filter:blur(8px);background:rgba(11,18,32,.6);border-bottom:1px solid rgba(255,255,255,.06);z-index:10}
     .nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
     .brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
     .badge{font-size:12px;padding:2px 8px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:var(--muted)}
     .btn{display:inline-block;padding:10px 16px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:#081226;font-weight:600;box-shadow:0 8px 24px rgba(34,211,238,.2)}
     .btn:hover{filter:brightness(1.05)}
+
     .hero{padding:56px 0 22px;text-align:center;position:relative;overflow:hidden}
     .kicker{color:var(--accent-2);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:12px}
     h1{margin:10px 0 14px;font-size:clamp(28px,4.8vw,48px);line-height:1.1}
-    .lead{max-width:840px;margin:0 auto;color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
+    .lead{max-width:960px;margin:0 auto;color:var(--muted);font-size:clamp(15px,2.2vw,18px)}
+
     .features{display:grid;grid-template-columns:repeat(12,1fr);gap:16px;margin:28px auto 36px}
     .card{grid-column:span 4;background:linear-gradient(180deg,rgba(255,255,255,.04),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:16px}
     .card h3{margin:6px 0 8px;font-size:18px}.card p{color:var(--muted);margin:0;font-size:14px}
+
     .frame-wrap{margin:24px 0 8px;background:var(--card);border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:12px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 20px 60px rgba(0,0,0,.4)}
     .frame-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:6px 10px 10px}
     .frame-title{font-weight:700;font-size:14px;color:var(--muted);letter-spacing:.02em}
     .frame-hint{font-size:12px;color:var(--muted)}
-    .iframe-box{position:relative;width:100%;height:min(78vh,900px);min-height:600px;border-radius:12px;overflow:hidden}
+
+    /* full-bleed для секции с iframe — на всю ширину экрана */
+    .fullbleed{width:100vw;margin-left:50%;transform:translateX(-50%);padding-left:20px;padding-right:20px}
+
+    .iframe-box{position:relative;width:100%;height:min(78vh,900px);min-height:620px;border-radius:12px;overflow:hidden}
     .iframe-box>iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#0b1220}
+
     .note{text-align:center;color:var(--muted);font-size:13px;margin-top:10px}
     .faq{display:grid;gap:12px;margin:36px 0 64px}
     .faq details{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:12px 14px}
     .faq summary{cursor:pointer;font-weight:700}
     .faq p{color:var(--muted);margin:8px 0 0}
+
     footer{border-top:1px solid rgba(255,255,255,.08);padding:18px 0 40px;color:var(--muted);font-size:14px}
     .foot{display:flex;flex-wrap:wrap;align-items:center;gap:12px;justify-content:space-between}
     .contacts{margin:40px 0 20px}
@@ -58,14 +70,15 @@
     .contacts-card.small{grid-column:span 4;display:flex;flex-direction:column;gap:10px}
     .contacts-card p{margin:6px 0}
     .contacts .mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace}
+
     /* media */
     .hero-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:.6}
     .frame-wrap .ambient{width:100%;border-radius:12px;display:block;margin-bottom:12px;border:1px solid rgba(255,255,255,.06)}
     .journey{margin:28px 0 40px}
     .journey-video{width:100%;border-radius:16px;display:block;border:1px solid rgba(255,255,255,.08)}
-    /* icon button */
     .icon-btn{display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);cursor:pointer}
     .icon-btn:hover{background:rgba(255,255,255,.1)}
+
     @media (max-width:900px){.card{grid-column:span 6}.contacts-card,.contacts-card.small{grid-column:span 12}}
     @media (max-width:640px){.features{gap:12px}.card{grid-column:span 12}.iframe-box{min-height:520px;height:70vh}.nav .btn{display:none}}
   </style>
@@ -112,7 +125,8 @@
     <!-- Декоративний роздільник між секціями -->
     <img src="divider-routes.png" alt="Мережа авіамаршрутів" width="2400" height="400" loading="lazy" style="width:100%;border-radius:12px;opacity:.9;margin:4px 0 18px;">
 
-    <section id="book" class="frame-wrap" aria-label="Онлайн-форма бронювання">
+    <!-- full-width секция с iframe -->
+    <section id="book" class="frame-wrap fullbleed" aria-label="Онлайн-форма бронювання">
       <div class="frame-head">
         <div class="frame-title">Онлайн-бронювання</div>
         <div class="frame-hint">Форма відкриється нижче. Якщо не завантажується — скористайтесь прямим посиланням.</div>
@@ -135,7 +149,7 @@
       <p class="note">Прямий перехід: <a href="https://booking.online-ticket.com.ua" rel="noopener" target="_blank">відкрити у новому вікні</a></p>
     </section>
 
-    <section class="faq" aria-label="Часті запитання">
+    <section class="container faq" aria-label="Часті запитання">
       <details>
         <summary>Як я отримаю квиток після оплати?</summary>
         <p>Маршрут-квитанція (e-ticket) надійде на електронну пошту, вказану під час бронювання. Також можна запросити дублікати у підтримці.</p>
@@ -150,14 +164,13 @@
       </details>
     </section>
 
-    <section id="contacts" class="contacts" aria-label="Контакти">
+    <section id="contacts" class="container contacts" aria-label="Контакти">
       <h2>Контакти</h2>
       <div class="contacts-grid">
         <div class="contacts-card">
           <h3>Реквізити</h3>
           <p><strong>ФОП:</strong> Домешок М.М.</p>
           <p><strong>Телефон:</strong> <a href="tel:+380957956455">+380 (95) 795 64 55</a></p>
-          <!-- Прихований e-mail: показуємо тільки іконку-кнопку -->
           <p><strong>Email:</strong>
             <button class="icon-btn" id="mailBtn" aria-label="Написати листа" title="Написати листа">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e5e7eb" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -176,7 +189,7 @@
       </div>
     </section>
 
-    <section class="journey" aria-label="Натхненне відео">
+    <section class="container journey" aria-label="Натхненне відео">
       <video class="journey-video" autoplay muted loop playsinline poster="hero-flight-vertical.png">
         <source src="journey-begins.mp4" type="video/mp4" />
       </video>
@@ -198,7 +211,6 @@
   </footer>
 
   <script>
-    // Рік у футері
     document.getElementById('y').textContent = new Date().getFullYear();
 
     // Кнопки e-mail (адрес не світиться в коді сторінки)
